@@ -9,8 +9,8 @@
       <h1 class="title">Electron Study</h1>
       <div class="toolbar-actions">
         <div class="btn-group">
-          <router-link to="/" tag="button" class="btn btn-default"><span class="icon icon-home" /></router-link>
-          <router-link to="/about" tag="button" class="btn btn-default"><span class="icon icon-help" /></router-link>
+          <router-link to="/" tag="button" class="btn btn-default"><span class="icon icon-home"/></router-link>
+          <router-link to="/about" tag="button" class="btn btn-default"><span class="icon icon-help"/></router-link>
         </div>
       </div>
     </header>
@@ -22,28 +22,30 @@
 
 <script>
 import { remote } from 'electron'
-const { app, BrowserWindow } = remote
+
+const { app } = remote
 
 export default {
   name: 'App',
   data () {
+    let currentWindow = remote.getCurrentWindow()
     return {
-      focused: false
+      focused: currentWindow.isFocused()
     }
   },
   methods: {
     close () {
-      BrowserWindow.getFocusedWindow().close()
+      remote.getCurrentWindow().close()
     },
     minimize () {
-      BrowserWindow.getFocusedWindow().minimize()
+      remote.getCurrentWindow().minimize()
     },
     maximize () {
-      let activeWindow = BrowserWindow.getFocusedWindow()
-      if (activeWindow.isMaximized()) {
-        activeWindow.restore()
+      let currentWindow = remote.getCurrentWindow()
+      if (currentWindow.isMaximized()) {
+        currentWindow.restore()
       } else {
-        activeWindow.maximize()
+        currentWindow.maximize()
       }
     },
     onFocus () {
@@ -70,6 +72,7 @@ export default {
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   position relative
+
 .traffic-lights
   float left
 </style>
