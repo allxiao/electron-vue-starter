@@ -1,10 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <header class="toolbar toolbar-header">
+      <h1 class="title">Electron Study</h1>
+      <div class="toolbar-actions">
+        <div class="btn-group">
+          <router-link to="/" tag="button" class="btn btn-default"><span class="icon icon-home" /></router-link>
+          <router-link to="/about" tag="button" class="btn btn-default"><span class="icon icon-help" /></router-link>
+        </div>
+      </div>
+    </header>
+    <div class="window-content">
+      <router-view/>
     </div>
-    <router-view/>
   </div>
 </template>
 
@@ -13,7 +20,7 @@
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+header.toolbar
+  -webkit-user-select none
+  -webkit-app-region drag
 </style>

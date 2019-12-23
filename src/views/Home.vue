@@ -16,3 +16,9 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+div.home
+  text-align center
+  color #2c3e50
+</style>
