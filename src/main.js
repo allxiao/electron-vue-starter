@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 require('./assets/css/photon.css')
+require('./assets/css/traffic-lights.css')
 
 Vue.config.productionTip = false
 
