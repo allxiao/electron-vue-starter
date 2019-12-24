@@ -66,11 +66,11 @@
 }
 
 .traffic-light-close:before {
-    transform: rotate(45deg);
+    transform: rotate(45deg) translate(0.5px, 0.5px);
 }
 
 .traffic-light-close:after {
-    transform: rotate(-45deg);
+    transform: rotate(-45deg) translate(-0.5px, 0.5px);
 }
 
 .traffic-light-close:active:hover:before, .traffic-light-close:active:hover:after {
