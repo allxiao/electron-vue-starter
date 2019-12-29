@@ -1,12 +1,13 @@
 <template>
   <div id="app" :class="{focus: focused}">
     <header id="title-bar" class="toolbar toolbar-header draggable">
+      <h1 class="title">Electron Study</h1>
       <div class="btn-group traffic-lights">
         <button class="traffic-light traffic-light-close" @click="close"/>
         <button class="traffic-light traffic-light-minimize" @click="minimize"/>
         <button class="traffic-light traffic-light-maximize" @click="maximize"/>
       </div>
-      <h1 class="title">Electron Study</h1>
+      <div class="clearfix"></div>
       <div class="toolbar-actions">
         <div class="btn-group">
           <router-link to="/" tag="button" class="btn btn-default"><span class="icon icon-home"/></router-link>
@@ -43,7 +44,7 @@ export default {
     maximize () {
       let currentWindow = remote.getCurrentWindow()
       if (currentWindow.isMaximized()) {
-        currentWindow.restore()
+        currentWindow.unmaximize()
       } else {
         currentWindow.maximize()
       }
@@ -73,6 +74,11 @@ export default {
   -moz-osx-font-smoothing grayscale
   position relative
 
-.traffic-lights
+#title-bar .traffic-lights
   float left
+#title-bar h1.title
+  position absolute
+  left 0
+  top 0
+  width: 100%
 </style>
