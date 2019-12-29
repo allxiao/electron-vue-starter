@@ -1,4 +1,4 @@
-# electron-study
+# electron-vue-starter
 
 ## Project setup
 ```
