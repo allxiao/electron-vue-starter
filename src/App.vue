@@ -36,6 +36,8 @@ export default {
   },
   methods: {
     close () {
+      // If we close the window, the beforeDestroy event won't be triggered
+      this.deregisterFocusEvents()
       remote.getCurrentWindow().close()
     },
     minimize () {
@@ -54,6 +56,10 @@ export default {
     },
     onBlur () {
       this.focused = false
+    },
+    deregisterFocusEvents () {
+      app.removeListener('browser-window-blur', this.onBlur)
+      app.removeListener('browser-window-focus', this.onFocus)
     }
   },
   mounted () {
@@ -61,8 +67,7 @@ export default {
     app.on('browser-window-focus', this.onFocus)
   },
   beforeDestroy () {
-    app.removeListener('browser-window-blur', this.onBlur)
-    app.removeListener('browser-window-focus', this.onFocus)
+    this.deregisterFocusEvents()
   }
 }
 </script>
